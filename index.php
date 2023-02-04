@@ -8,7 +8,7 @@ include './shared/header1.php';
 
 
 
-path('./pages-login.php') ;
+path('./index.html') ;
 
 
 include './shared/head.php';

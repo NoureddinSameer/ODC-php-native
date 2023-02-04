@@ -1,5 +1,5 @@
 
-  <footer id="footer" class="footer">
+<footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>Noureddin Sameer</span></strong>. All Rights Reserved
     </div>

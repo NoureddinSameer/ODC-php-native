@@ -12,28 +12,27 @@ $Check = mysqli_query($connection, $selectOneRow);
 // i represent the row
 if ($Check) {
     $i = mysqli_fetch_assoc($Check);
-    $lawyerName1 = $i['firstname'];
-    $lawyerName2 = $i['secondname'];
-    $lawyerAge = $i['age'];
-    $lawyerAddress = $i['address'];
-    $lawyerSalary = $i['salary'];
-    $lawyerYearsEX = $i['yearsEX'];
-    $lawyerPhone = $i['phone'];
-    $lawyerEmail = $i['email'];
-    $lawyerPassword = $i['password'];
+    $partnerName1 = $i['firstname'];
+    $partnerName2 = $i['secondname'];
+    $partnerAge = $i['age'];
+    $partnerAddress = $i['address'];
+    
+    $partnerComments = $i['partnerComments'];
+    $partnerPhone = $i['phone'];
+    $partnerEmail = $i['email'];
+    $partnerPassword = $i['password'];
 }
 //update after we press on button of Update Data
 if (isset($_POST['update'])) {
-    $lawyerName1 = $_POST['lawyerName1'];
-    $lawyerName2 = $_POST['lawyerName2'];
-    $lawyerAge = $_POST['lawyerAge'];
-    $lawyerAddress = $_POST['lawyerAddress'];
-    $lawyerSalary = $_POST['lawyerSalary'];
-    $lawyerYearsEX = $_POST['lawyerYearsEX'];
-    $lawyerPhone = $_POST['lawyerPhone'];
-    $lawyerEmail = $_POST['lawyerEmail'];
-    $lawyerPassword = $_POST['lawyerPassword'];
-    $lawyerPassword = encryp($lawyerPassword);
+    $partnerName1 = $_POST['partnerName1'];
+    $partnerName2 = $_POST['partnerName2'];
+    $partnerAge = $_POST['partnerAge'];
+    $partnerAddress = $_POST['partnerAddress'];
+    $partnerComments = $_POST['partnerComments'];
+    $partnerPhone = $_POST['partnerPhone'];
+    $partnerEmail = $_POST['partnerEmail'];
+    $partnerPassword = $_POST['partnerPassword'];
+    $partnerPassword = encryp($partnerPassword);
 
     if (empty($_FILES['image']['name'])) {
         $image_name = $i['image'];
@@ -46,9 +45,9 @@ if (isset($_POST['update'])) {
     }
 
 
-    $update = "UPDATE `lawyers` SET  firstname='$lawyerName1',secondname='$lawyerName2',age=$lawyerAge,
-    address='$lawyerAddress',salary=$lawyerSalary,yearsEX=$lawyerYearsEX,
-    phone='$lawyerPhone',email='$lawyerEmail',`password`='$lawyerPassword',image='$image_name' WHERE id=$id";
+    $update = "UPDATE `lawyers` SET  firstname='$partnerName1',secondname='$partnerName2',age=$partnerAge,
+    address='$partnerAddress',comments=$partnerComments,
+    phone='$partnerPhone',email='$partnerEmail',`password`='$partnerPassword',image='$image_name' WHERE id=$id";
     $CheckUpdate = mysqli_query($connection, $update);
 
     if ($CheckUpdate) {
@@ -63,44 +62,41 @@ if (isset($_POST['update'])) {
 <br><br><br>
 <form action="" method="POST" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="lawyerName1">Lawyer First Name</label>
-        <input type="text" class="form-control" value=<?= $lawyerName1 ?> id="lawyerName1" name="lawyerName1" required>
+        <label for="partnerName1">Partner First Name</label>
+        <input type="text" class="form-control" value=<?= $partnerName1 ?> id="partnerName1" name="partnerName1" required>
     </div>
     <div class="form-group">
-        <label for="lawyerName2">Lawyer Second Name</label>
-        <input type="text" class="form-control" value=<?= $lawyerName2 ?> id="lawyerName2" name="lawyerName2" required>
+        <label for="partnerName2">Partner Second Name</label>
+        <input type="text" class="form-control" value=<?= $partnerName2 ?> id="partnerName2" name="partnerName2" required>
     </div>
     <div class="form-group">
-        <label for="lawyerAge">Lawyer Age</label>
-        <input type="text" class="form-control" value=<?= $lawyerAge ?> id="lawyerAge" name="lawyerAge" required>
+        <label for="partnerAge">Partner Age</label>
+        <input type="text" class="form-control" value=<?= $partnerAge ?> id="partnerAge" name="partnerAge" required>
     </div>
     <div class="form-group">
-        <label for="lawyerAddress">Lawyer Address</label>
-        <input type="text" class="form-control" value=<?= $lawyerAddress ?> id="lawyerAddress" name="lawyerAddress" required>
+        <label for="partnerAddress">Partner Address</label>
+        <input type="text" class="form-control" value=<?= $partnerAddress ?> id="partnerAddress" name="partnerAddress" required>
+    </div>    
+    
+    <div class="form-group">
+        <label for="partnerPhone">Partner Phone</label>
+        <input type="text" class="form-control" value=<?= $partnerPhone ?> id="partnerPhone" name="partnerPhone" required>
     </div>
     <div class="form-group">
-        <label for="lawyerSalary">Lawyer Address</label>
-        <input type="text" class="form-control" value=<?= $lawyerSalary ?> id="lawyerSalary" name="lawyerSalary" required>
+        <label for="partnerEmail">Partner Email</label>
+        <input type="text" class="form-control" value=<?= $partnerEmail ?> id="partnerEmail" name="partnerEmail" required>
     </div>
     <div class="form-group">
-        <label for="lawyerYearsEX">Lawyer Years EX</label>
-        <input type="text" class="form-control" value=<?= $lawyerYearsEX ?> id="lawyerYearsEX" name="lawyerYearsEX" required>
+        <label for="partnerPassword">Partner Password</label>
+        <input type="text" class="form-control" value=<?= $partnerPassword ?> id="partnerPassword" name="partnerPassword" required>
     </div>
     <div class="form-group">
-        <label for="lawyerPhone">Lawyer Phone</label>
-        <input type="text" class="form-control" value=<?= $lawyerPhone ?> id="lawyerPhone" name="lawyerPhone" required>
-    </div>
-    <div class="form-group">
-        <label for="lawyerEmail">Lawyer Email</label>
-        <input type="text" class="form-control" value=<?= $lawyerEmail ?> id="lawyerEmail" name="lawyerEmail" required>
-    </div>
-    <div class="form-group">
-        <label for="lawyerPassword">Lawyer Password</label>
-        <input type="text" class="form-control" value=<?= $lawyerPassword ?> id="lawyerPassword" name="lawyerPassword" required>
-    </div>
-    <div class="form-group">
-        <label for="">Lawyer Profile Photo</label>
+        <label for="">Partner's Photo</label>
         <input class="form-control" type="file" name="image">
+    </div>
+    <div class="form-group">
+        <label for="partnerComments">Partner Comments</label>
+        <input type="text" class="form-control" value=<?= $partnerComments ?> id="partnerComments" name="partnerComments" required>
     </div>
     <button type="submit" name="update" class="btn btn-primary">Update Data</button>
 </form>

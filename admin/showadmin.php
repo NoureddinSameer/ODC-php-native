@@ -25,7 +25,7 @@ foreach ($iC as $row) { ?>
             <h6>Address : <?= $row['address'] ?></h6>
             <h6>Phone : <?= $row['phone'] ?></h6>
             <h6>Email : <?= $row['email'] ?></h6>
-            <h6>Password : <?= $row['password'] ?></h6>
+            <!-- <h6>Password : <?= $row['password'] ?></h6> -->
 
         </div>
     </div>
