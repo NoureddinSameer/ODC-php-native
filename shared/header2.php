@@ -5,7 +5,7 @@ session_start();
 if (isset($_GET['logout'])) {
     session_unset();
     session_destroy();
-    header("location: ../index.php");
+    header("location: ../pages-login.php");
 }
 
 if (isset($_SESSION['admin'])) {
@@ -26,18 +26,17 @@ if (isset($_SESSION['admin'])) {
     }
     } 
     else{
-        $readAll2 = "SELECT * FROM `lawyers` WHERE email='$email'";
-        $iC2 = mysqli_query($connection, $readAll2);
-        if ($iC2) {
-            foreach ($iC2 as $row2) {
-            $name = $row2['firstname'];
-            $image = $row2['image'];
-            $phone = $row2['phone'];
-            $address = $row2['address'];
-            $user="Lawyer";
-            }
+    $readAll2 = "SELECT * FROM `lawyers` WHERE email='$email'";
+    $iC2 = mysqli_query($connection, $readAll2);
+    if ($iC2) {
+        foreach ($iC2 as $row2) {
+        $name = $row2['firstname'];
+        $image = $row2['image'];
+        $phone = $row2['phone'];
+        $address = $row2['address'];
+        $user="Lawyer";
         }
-        
+    }
     }
 }
 ?>
@@ -48,8 +47,8 @@ if (isset($_SESSION['admin'])) {
 
         <a href="../welcome.php" class="logo d-flex align-items-center">
             
-            
-            <span class="d-none d-lg-block">Baldaty</span>
+            <label><i class="fa-brands fa-slack fa-2x"></i></label>
+            <span class="d-none d-lg-block">System Company</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
 
@@ -94,14 +93,14 @@ if (isset($_SESSION['admin'])) {
 
     <?php if (isset($_SESSION['admin'])) : ?>
         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="" data-bs-toggle="dropdown">
-            <span class="d-none d-md-block dropdown-toggle ps-2"><?= 'Partners' ?></span>
+            <span class="d-none d-md-block dropdown-toggle ps-2"><?= 'Lawyers' ?></span>
         </a>
 
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li>
                 <a class="dropdown-item d-flex align-items-center" href="../lawyer/createlawyer.php">
                     <i class="bi bi-gear"></i>
-                    <span>Add Partner</span>
+                    <span>Add Lawyer</span>
                 </a>
             </li>
             <li>
@@ -126,6 +125,13 @@ if (isset($_SESSION['admin'])) {
         </ul>
     <?php endif; ?>
     <!-- end lawyers -->
+
+    <div class="search-bar">
+        <form class="search-form d-flex align-items-center" method="POST" action="">
+            <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+        </form>
+    </div>
 
     <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">

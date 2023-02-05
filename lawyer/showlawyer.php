@@ -6,9 +6,6 @@ include '../shared/header2.php';
 
 
 checklink();
-if ($_SESSION['admin']['role'] != "1") {
-  path('404.php');
-}
 $readAll = "SELECT * FROM `lawyers`";
 $iC = mysqli_query($connection, $readAll);
 foreach ($iC as $row) { ?>
@@ -21,11 +18,11 @@ foreach ($iC as $row) { ?>
                 <h6>Name : <?= $row['firstname'].' '.$row['secondname'] ?></h6>
                 <h6>Age : <?= $row['age'] ?></h6>
                 <h6>Address : <?= $row['address'] ?></h6>
-                
-                <h6>Comments : <?= $row['comments'] ?></h6>
+                <h6>Salary : <?= $row['salary'] ?></h6>
+                <h6>Experience : <?= $row['yearsEX'] ?></h6>
                 <h6>Phone : <?= $row['phone'] ?></h6>
                 <h6>Email : <?= $row['email'] ?></h6>
-                
+                <h6>Password : <?= $row['password'] ?></h6>
 
             </div>
         </div>

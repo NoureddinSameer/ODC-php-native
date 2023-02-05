@@ -6,9 +6,6 @@ include '../shared/header2.php';
 
 
 checklink();
-if ($_SESSION['admin']['role'] != "1") {
-  path('404.php');
-}
 // Delete
 if (isset($_GET['removeId'])) {
   $id = $_GET['removeId'];
@@ -23,7 +20,7 @@ if (isset($_GET['removeId'])) {
   path('lawyer/listlawyer.php');
 }
 ?>
-<h1 class="text-center"> list of Partners</h1>
+<h1 class="text-center"> list of lawyers</h1>
 <table class="table table-dark">
 
   <?php
@@ -33,12 +30,14 @@ if (isset($_GET['removeId'])) {
     <tr>
       <th scope="col">#ID</th>
       <th scope="col">Name</th>
-      <th scope="col">Partner Age</th>
-      <th scope="col">Partner Address</th>
-      <th scope="col">Partner Comments</th>
-      <th scope="col">Partner Phone</th>
-      <th scope="col">Partner Email</th>
-      <th scope="col">Partner Picture</th>
+      <th scope="col">Lawyer Age</th>
+      <th scope="col">Lawyer Address</th>
+      <th scope="col">Lawyer Salary</th>
+      <th scope="col">Lawyer Years EX</th>
+      <th scope="col">Lawyer Phone</th>
+      <th scope="col">Lawyer Email</th>
+      <th scope="col">Lawyer Password</th>
+      <th scope="col">Lawyer Picture</th>
       <th scope="col">Action</th>
       <!-- <th scope="col">Lawyer Image</th> -->
       <!-- <th scope="col">Action</th> -->
@@ -51,11 +50,11 @@ if (isset($_GET['removeId'])) {
       <th scope="col"><?= $i['firstname'].' '.$i['secondname'] ?></th>
       <th scope="col"><?= $i['age'] ?></th>
       <th scope="col"><?= $i['address'] ?></th>
-      
-      <th scope="col"><?= $i['comments'] ?></th>
+      <th scope="col"><?= $i['salary'] ?></th>
+      <th scope="col"><?= $i['yearsEX'] ?></th>
       <th scope="col"><?= $i['phone'] ?></th>
       <th scope="col"><?= $i['email'] ?></th>
-      
+      <th scope="col"><?= $i['password'] ?></th>
       <th scope="col">
         
       

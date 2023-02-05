@@ -83,7 +83,7 @@ if (isset($_POST['login'])) {
                 <div class="d-flex justify-content-center py-4">
                   <a href="index.php" class="logo d-flex align-items-center w-auto">
                     <label><i class="fa-brands fa-slack fa-2x"></i></label>
-                    <span class="d-none d-lg-block">Baldaty</span>
+                    <span class="d-none d-lg-block">System Company</span>
                   </a>
                 </div>
                 <div class="card mb-3">
